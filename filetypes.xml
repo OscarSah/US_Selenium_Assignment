@@ -1,0 +1,18 @@
+<application>
+  <component name="FileTypeManager" version="18">
+    <extensionMap>
+      <mapping pattern="SeleniumNotes" type="AUTO_DETECTED" />
+      <mapping pattern="NotesOfTheWeek" type="AUTO_DETECTED" />
+      <mapping pattern="notes" type="AUTO_DETECTED" />
+      <mapping pattern="SeleniumWebElement" type="AUTO_DETECTED" />
+      <mapping pattern="Selenium Notes" type="AUTO_DETECTED" />
+      <mapping pattern="ReviewNotes" type="AUTO_DETECTED" />
+      <mapping ext="space.kts" type="Kotlin" />
+      <mapping ext="gradle.kts" type="Kotlin" />
+      <mapping ext="main.kts" type="Kotlin" />
+      <mapping pattern="com.cbt.utilities" type="MavenConfig" />
+      <removed_mapping ext="apk" approved="true" type="ARCHIVE" />
+      <removed_mapping ext="psd" approved="true" type="Image" />
+    </extensionMap>
+  </component>
+</application>
