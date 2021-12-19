@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CheckBoxVerification2 {
+public class CheckBoxVerification {
     @Test
     public void testCase2() throws InterruptedException {
         WebDriver driver = WebDriverFactory.getDriver("chrome");
