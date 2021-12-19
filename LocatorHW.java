@@ -82,13 +82,13 @@ public class LocatorHW {
         seleniumSoftwareLinkElement.click();
 
         String actualURL = driver3.getCurrentUrl();
-        if (actualURL.toLowerCase().substring(actualURL.length()-19, actualURL.length()).equalsIgnoreCase("selenium_(software)")){
+        if (actualURL.toLowerCase().substring(actualURL.length()-19).equalsIgnoreCase("selenium_(software)")){
             System.out.println("Actual URL : " + actualURL);
             System.out.println("Expected end with URL : \"...Selenium_(software)\" ");
             System.out.println("Test Case 3 --> PASS");
         }else {
             System.out.println("Actual URL : " + actualURL + " Expected URL : \"...Selenium_(software)\"");
-            System.out.println(actualURL.toLowerCase().substring(actualURL.length()-19, actualURL.length()));
+            System.out.println(actualURL.toLowerCase().substring(actualURL.length()-19));
             System.out.println("Test Case 3 --> FAIL");
         }
         driver3.quit();
