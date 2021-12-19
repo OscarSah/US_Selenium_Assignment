@@ -7,6 +7,7 @@
       <mapping pattern="SeleniumWebElement" type="AUTO_DETECTED" />
       <mapping pattern="Selenium Notes" type="AUTO_DETECTED" />
       <mapping pattern="ReviewNotes" type="AUTO_DETECTED" />
+      <mapping pattern="Notes" type="AUTO_DETECTED" />
       <mapping ext="space.kts" type="Kotlin" />
       <mapping ext="gradle.kts" type="Kotlin" />
       <mapping ext="main.kts" type="Kotlin" />
