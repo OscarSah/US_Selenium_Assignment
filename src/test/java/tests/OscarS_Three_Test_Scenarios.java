@@ -45,8 +45,8 @@ public class OscarS_Three_Test_Scenarios {
         4. Then handle the Javascript alert
          */
         driver.get("https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver");
-        WebElement clickMEToOpen = driver.findElement(By.id("alert"));
-        clickMEToOpen.click();
+        WebElement clickMeToOpen = driver.findElement(By.id("alert"));
+        clickMeToOpen.click();
 
         WebDriverWait wait = new WebDriverWait(driver,20);
         wait.until(ExpectedConditions.alertIsPresent());
@@ -92,67 +92,67 @@ public class OscarS_Three_Test_Scenarios {
         6. Then verify Total is equal to Quantity*PricePerUnit
          */
 
+        //STEP:1
         driver.get("http://secure.smartbearsoftware.com/samples/testcomplete12/WebOrders/login.aspx");
+
+        //STEP:2
         WebElement usernameInputBox = driver.findElement(By.xpath("//input[@id='ctl00_MainContent_username']"));
         usernameInputBox.sendKeys("Tester");
 
         WebElement passwordInputBox = driver.findElement(By.cssSelector("#ctl00_MainContent_password"));
         passwordInputBox.sendKeys("test");
-
         driver.findElement(By.id("ctl00_MainContent_login_button")).click();
 
-//        Alert alert= driver.switchTo().alert();
-//        driver.switchTo().alert();
-//        alert.dismiss();
+        //STEP:3
+        driver.findElement(By.xpath("//ul[@id='ctl00_menu']/li[3]/a")).click();  //select Order
 
-        driver.findElement(By.xpath("//ul[@id='ctl00_menu']/li[3]/a")).click();
-
-        WebElement productOptions = driver.findElement(By.id("ctl00_MainContent_fmwOrder_ddlProduct"));
+        //STEP:4
         String expectedOption = "MyMoney";
-
+        WebElement productOptions = driver.findElement(By.id("ctl00_MainContent_fmwOrder_ddlProduct"));
         Select select= new Select(productOptions);
         String actualOption = select.getFirstSelectedOption().getText();
         Assert.assertEquals(expectedOption,actualOption,"verify MyMoney is selected");
 
+        //in order to see Product option related info on console
         System.out.println("Selected option -> " + select.getFirstSelectedOption().getText());
-
         List<WebElement> productList = driver.findElements(By.tagName("option"));
         System.out.println("productList.size() = " + productList.size());
         for (WebElement option: productList) {
             System.out.println(option.getText());
         }
+
+        //STEP:5
+        //Select Family Album
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.elementToBeClickable(productList.get(1)));
         productList.get(1).click();
 
+        //Select Quantity and click Calculate
         driver.findElement(By.cssSelector("#ctl00_MainContent_fmwOrder_txtQuantity")).sendKeys("2");
         driver.findElement(By.xpath("//input[@value='Calculate']")).click();
         Thread.sleep(1000);
 
+        //STEP:6
         WebElement quantityBox = driver.findElement(By.cssSelector("#ctl00_MainContent_fmwOrder_txtQuantity"));
         WebElement pricePerUnitBox = driver.findElement(By.cssSelector("#ctl00_MainContent_fmwOrder_txtUnitPrice"));
         WebElement totalBox = driver.findElement(By.cssSelector("#ctl00_MainContent_fmwOrder_txtTotal"));
 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
         int expectedPrice = 160;
-
-
-        System.out.println("pricePerUnitBox.isEnabled() = " + pricePerUnitBox.isEnabled());
-        System.out.println("pricePerUnitBox.getText() = " + pricePerUnitBox.getAttribute("value"));
-        System.out.println("totalBox.getAttribute(\"value\") = " + totalBox.getAttribute("value"));
-//        if (Integer.parseInt(quantityBox.getAttribute("value"))*Integer.parseInt(pricePerUnitBox.getAttribute("value"))==
-//                Integer.parseInt(totalBox.getAttribute("value"))){
-//            System.out.println("Total amount is correct. Test PASS");
-//        }else{
-//            System.out.println("Test FAIL");
-//        }
-
         if (expectedPrice==Integer.parseInt(totalBox.getAttribute("value"))){
             System.out.println("Total amount is correct. Task3 --> PASS");
         }else{
             System.out.println("Task3 --> FAIL");
         }
 
-    }
+        /**Alternative way to verify numbers */
+//        if (Integer.parseInt(quantityBox.getAttribute("value"))*Integer.parseInt(pricePerUnitBox.getAttribute("value"))==
+//                Integer.parseInt(totalBox.getAttribute("value"))){
+//            System.out.println("Total amount is correct. Task --> PASS");
+//        }else{
+//            System.out.println("Task --> FAIL");
+//        }
 
+    }
 }
